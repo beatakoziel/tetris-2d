@@ -4,6 +4,12 @@
 
 Menu::Menu(float width, float height)
 {
+	loadMenuFont();
+	initializeMenuOptions(width, height);
+}
+
+void Menu::loadMenuFont()
+{
 	if (!font.loadFromFile("resources/fonts/CuteJellyfish.ttf"))
 	{
 		if (!font.loadFromFile("resources/fonts/LemonBrush.otf"))
@@ -12,20 +18,23 @@ Menu::Menu(float width, float height)
 				sf::err();
 		}
 	}
+}
 
+void Menu::initializeMenuOptions(float width, float height)
+{
 	menu[0].setFont(font);
-	menu[0].setFillColor(sf::Color::Red);
+	menu[0].setFillColor(sf::Color::Green);
 	menu[0].setString("Play!");
 	sf::FloatRect menuRect0 = menu[0].getLocalBounds();
 	menu[0].setOrigin(menuRect0.left + menuRect0.width / 2.0f, menuRect0.top + menuRect0.height / 2.0f);
-	menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1)* 1));
+	menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
 
 	menu[1].setFont(font);
 	menu[1].setFillColor(sf::Color::White);
 	menu[1].setString("Options");
 	sf::FloatRect menuRect1 = menu[1].getLocalBounds();
 	menu[1].setOrigin(menuRect1.left + menuRect1.width / 2.0f, menuRect1.top + menuRect1.height / 2.0f);
-	menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1)* 2));
+	menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::White);
@@ -37,12 +46,11 @@ Menu::Menu(float width, float height)
 	selectedItemIndex = 0;
 }
 
-
 Menu::~Menu()
 {
 }
 
-void Menu::draw(sf::RenderWindow &window)
+void Menu::drawTextInMenu(sf::RenderWindow &window)
 {
 	for(int i=0; i < MAX_NUMBER_OF_ITEMS; i++)
 	{

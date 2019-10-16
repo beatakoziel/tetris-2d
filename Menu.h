@@ -8,9 +8,11 @@ class Menu
 {
 public:
 	Menu(float width, float height);
+	void loadMenuFont();
+	void initializeMenuOptions(float width, float height);
 	~Menu();
 
-	void draw(sf::RenderWindow &window);
+	void drawTextInMenu(sf::RenderWindow &window);
 	void moveUp();
 	void moveDown();
 	int getPressedItem() { return selectedItemIndex;  }

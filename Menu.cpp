@@ -40,8 +40,9 @@ void Menu::moveDown()
 sf::Texture Menu::loadMenuBackground()
 {
 	sf::Texture background_menu;
-	if (!background_menu.loadFromFile("resources/imgs/menu-background.jpg"))
+	if (!background_menu.loadFromFile("resources/imgs/back-yellow.png"))
 		sf::err();
+	background_menu.setSmooth(true);
 
 	return background_menu;
 }
@@ -51,7 +52,7 @@ sf::Sprite Menu::createMenuSprite(sf::Texture & background_menu)
 	sf::Vector2i screenDimensions(1280, 720);
 	sf::Sprite menuSprite;
 	menuSprite.setTexture(background_menu);
-	menuSprite.setScale(1.0f, (float)screenDimensions.y / background_menu.getSize().y);
+	menuSprite.setScale((float)screenDimensions.x / background_menu.getSize().x, (float)screenDimensions.y / background_menu.getSize().y);
 
 	return menuSprite;
 }
@@ -59,18 +60,15 @@ sf::Sprite Menu::createMenuSprite(sf::Texture & background_menu)
 void Menu::loadMenuFont()
 {
 	if (!font.loadFromFile("resources/fonts/CuteJellyfish.ttf"))
-	{
 		if (!font.loadFromFile("resources/fonts/LemonBrush.otf"))
-		{
 			if (!font.loadFromFile("resources/fonts/Sketch3D.otf"))
 				sf::err();
-		}
-	}
 }
 
 void Menu::initializeMenuOptions(float width, float height, sf::Color activeOptionColor, sf::Color inactiveOptionColor)
 {
 	menu[0].setFont(font);
+	menu[0].setScale(1.4f, 1.4f);
 	menu[0].setFillColor(activeOptionColor);
 	menu[0].setString("Play!");
 	sf::FloatRect menuRect0 = menu[0].getLocalBounds();
@@ -78,6 +76,7 @@ void Menu::initializeMenuOptions(float width, float height, sf::Color activeOpti
 	menu[0].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
 
 	menu[1].setFont(font);
+	menu[1].setScale(1.4f, 1.4f);
 	menu[1].setFillColor(inactiveOptionColor);
 	menu[1].setString("Options");
 	sf::FloatRect menuRect1 = menu[1].getLocalBounds();
@@ -85,6 +84,7 @@ void Menu::initializeMenuOptions(float width, float height, sf::Color activeOpti
 	menu[1].setPosition(sf::Vector2f(width / 2, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 
 	menu[2].setFont(font);
+	menu[2].setScale(1.4f, 1.4f);
 	menu[2].setFillColor(inactiveOptionColor);
 	menu[2].setString("Exit");
 	sf::FloatRect menuRect2 = menu[2].getLocalBounds();

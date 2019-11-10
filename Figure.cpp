@@ -11,31 +11,64 @@ Figure::Figure()
 	figureSprite.setColor(color);
 }
 
-void Figure::moveLeft()
+void Figure::draw(sf::RenderWindow &window)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		float squareX = this->squaresCoordinates[i].getX();
+		float squareY = this->squaresCoordinates[i].getY();
+		sf::Sprite currentSquareSprite;
+		currentSquareSprite.setPosition(squareX, squareY);
+		window.draw(currentSquareSprite);
+	}
 }
 
-void Figure::moveRight()
+void Figure::moveLeft(sf::RenderWindow &window)
 {
-
+	for (int i = 0; i < 4; i++)
+	{
+		float squareX = this->squaresCoordinates[i].getX();
+		this->squaresCoordinates[i].setX(squareX - this->speed);
+		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
+		window.draw(this->figureSprite);
+	}
+	findLastSquare();
 }
 
-void Figure::moveDown()
+void Figure::moveRight(sf::RenderWindow &window)
 {
 	for (int i = 0; i < 4; i++)
 	{
 		float squareX = this->squaresCoordinates[i].getX();
 		this->squaresCoordinates[i].setX(squareX + this->speed);
+		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
+		window.draw(this->figureSprite);
+	}
+	findLastSquare();
+}
+
+void Figure::moveDown(sf::RenderWindow &window)
+{
+	for (int i = 0; i < 4; i++)
+	{
 		float squareY = this->squaresCoordinates[i].getY();
 		this->squaresCoordinates[i].setY(squareY + this->speed);
 		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
+		window.draw(this->figureSprite);
 	}
-		
+	findLastSquare();
 }
 
-void Figure::moveDownFaster()
+void Figure::moveDownFaster(sf::RenderWindow &window)
 {
-
+	for (int i = 0; i < 4; i++)
+	{
+		float squareY = this->squaresCoordinates[i].getY();
+		this->squaresCoordinates[i].setY(squareY + this->speed);
+		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
+		window.draw(this->figureSprite);
+	}
+	findLastSquare();
 }
 
 void Figure::moveRotate()
@@ -82,6 +115,16 @@ sf::Color Figure::generateColorOfTetrisFigure()
 	return randomColor;
 }
 
+sf::Color Figure::getColor()
+{
+	return this->color;
+}
+
+sf::Texture Figure::getTexture()
+{
+	return this->figureTexture;
+}
+
 
 sf::Texture Figure::loadFigureTexture()
 {
@@ -111,12 +154,17 @@ sf::Sprite Figure::getFigureSprite()
 	return this->figureSprite;
 }
 
-Point* Figure::getSquaresPosition()
+Point* Figure::getSquaresCoordinates()
 {
 	return this->squaresCoordinates;
 }
 
-void Figure::setSquaresPosition(int whichSquare, Point coordinates)
+Point Figure::getLastSquaresCoordinates()
+{
+	return this->lastSquareCoordinates;
+}
+
+void Figure::setSquaresCoordinates(int whichSquare, Point coordinates)
 {
 	this->squaresCoordinates[whichSquare] = coordinates;
 	if (whichSquare == 3)

@@ -111,7 +111,7 @@ int** Figure::generateFigureMatrix()
 sf::Color Figure::generateColorOfTetrisFigure()
 {
 	srand((unsigned)time(NULL));
-	sf::Color randomColor(rand() % 255, rand() % 255, rand() % 255, 223);
+	sf::Color randomColor(128 + rand() % 127, 128 + rand() % 127, 128 + rand() % 127, 223);
 	return randomColor;
 }
 

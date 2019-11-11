@@ -79,7 +79,7 @@ void Figure::moveRotate()
 int** Figure::generateFigureMatrix()
 {
 	srand((unsigned)time(NULL));
-	int whichFigure = rand() % 7;
+	int whichFigure = 0;// rand() % 7;
 	int** figureMatrix = new int*[4];
 	//int figureMatrix[2][4] = { {0} }; // = { {0} }; means "fill the matrix with zeroes"
 

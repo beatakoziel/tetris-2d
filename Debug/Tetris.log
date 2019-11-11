@@ -1,1 +1,3 @@
-﻿  Tetris.vcxproj -> C:\Users\beata\source\repos\Tetris\Debug\Tetris.exe
+﻿  Tetris.cpp
+c:\users\beata\source\repos\tetris\tetris\tetris.cpp(178): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Tetris.vcxproj -> C:\Users\beata\source\repos\Tetris\Debug\Tetris.exe

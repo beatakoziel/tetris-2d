@@ -181,7 +181,7 @@ void Figure::findLastSquare()
 	float min = arrayOfY[0];
 	int indexOfMin = 0;
 	for (int i = 0; i < 4; i++)
-		if (min > arrayOfY[i])
+		if (min < arrayOfY[i])
 			indexOfMin = i;
 	this->lastSquareCoordinates = squaresCoordinates[indexOfMin];
 }

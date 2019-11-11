@@ -3,8 +3,7 @@
 
 Board::Board()
 {
-	this->color = generateColor();
-	this->color2 = generateColor();
+	changeColors();
 }
 
 void Board::drawBoard(int xAxis, sf::RenderWindow &window)
@@ -45,4 +44,10 @@ void Board::drawHorizontalLine(sf::RenderWindow &window, int where, sf::Color co
 		sf::Vertex(sf::Vector2f((float)32 * xAxis, (float)where), color2)
 	};
 	window.draw(line, 2, sf::Lines);
+}
+
+void Board::changeColors()
+{
+	this->color = generateColor();
+	this->color2 = generateColor();
 }

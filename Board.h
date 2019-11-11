@@ -7,6 +7,7 @@ class Board
 public:
 	Board();
 	void drawBoard(int xAxis, sf::RenderWindow &window);
+	void changeColors();
 private:
 	sf::Color generateColor();
 	void drawVerticalLine(sf::RenderWindow & window, int where, sf::Color color, sf::Color color2);

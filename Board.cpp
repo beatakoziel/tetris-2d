@@ -3,14 +3,12 @@
 
 Board::Board()
 {
-	this->color = generateColor();
-	this->color2 = generateColor();
+	changeColorsOfLines();
 }
 
 Board::Board(int xSize, sf::Texture squareTexture) //ySize = 20
 {
-	this->color = generateColor();
-	this->color2 = generateColor();
+	changeColorsOfLines();
 	this->columns = xSize;
 	this->squareTexture = squareTexture;
 
@@ -36,7 +34,7 @@ void Board::drawBoard(sf::RenderWindow &window)
 
 	for (int i = 0; i < columns; i++)
 		for (int j = 0; j < 20; j++)
-			drawEmptySquareBox(window, i, j);
+			drawSquareBox(window, i, j);
 } 
 
 sf::Color Board::generateColor()
@@ -70,10 +68,29 @@ void Board::drawHorizontalLine(sf::RenderWindow &window, int where, sf::Color co
 	window.draw(line, 2, sf::Lines);
 }
 
-void Board::drawEmptySquareBox(sf::RenderWindow &window, int x, int y)
+void Board::drawSquareBox(sf::RenderWindow &window, int x, int y)
 {
 	sf::RectangleShape squareBox(sf::Vector2f(30, 30));
 	squareBox.setPosition(32 + (x * 32), y * 32);
-	squareBox.setFillColor(this->boardSquare[x][y].getColor());
+
+	if (!this->boardSquare[x][y].isPresent())		
+		squareBox.setFillColor(this->boardSquare[x][y].getColor());
+	else
+		squareBox.setFillColor(sf::Color::White);
+
 	window.draw(squareBox);
+}
+
+void Board::changeColorsOfLines()
+{
+	this->color = generateColor();
+	this->color2 = generateColor();
+}
+
+void Board::setPresenceInWholeBoard(int x, int y)
+{
+	x -= 32;
+	x /= 32;
+	y /= 32;
+	this->boardSquare[x][++y].setPresence(true);
 }

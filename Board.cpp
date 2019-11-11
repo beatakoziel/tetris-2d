@@ -7,13 +7,36 @@ Board::Board()
 	this->color2 = generateColor();
 }
 
-void Board::drawBoard(int xAxis, sf::RenderWindow &window)
+Board::Board(int xSize, sf::Texture squareTexture) //ySize = 20
 {
-	for(int i=0; i < xAxis; i++)
+	this->color = generateColor();
+	this->color2 = generateColor();
+	this->columns = xSize;
+	this->squareTexture = squareTexture;
+
+	this->boardSquare = new BoardSquare*[xSize];
+	for (int i = 0; i < xSize; ++i)
+		this->boardSquare[i] = new BoardSquare[20];
+
+	for (int i = 0; i < xSize; i++)
+		for (int j = 0; j < 20; j++)
+		{
+			this->boardSquare[i][j].setPresence(false);
+			this->boardSquare[i][j].setColor(sf::Color::Color(128, 128, 128, 64));
+		}
+}
+
+void Board::drawBoard(sf::RenderWindow &window)
+{
+	for (int i = 0; i < columns + 2; i++) 
 		drawVerticalLine(window, i, color, color2);
 
-	for(int i=0; i <= 20; i++)
-		drawHorizontalLine(window, i, color, color2, xAxis);
+	for (int i = 0; i <= 20; i++)
+		drawHorizontalLine(window, i, color, color2, columns);
+
+	for (int i = 0; i < columns; i++)
+		for (int j = 0; j < 20; j++)
+			drawEmptySquareBox(window, i, j);
 } 
 
 sf::Color Board::generateColor()
@@ -37,7 +60,7 @@ void Board::drawVerticalLine(sf::RenderWindow &window, int where, sf::Color colo
 void Board::drawHorizontalLine(sf::RenderWindow &window, int where, sf::Color color, sf::Color color2, int xAxis)
 {
 	where *= 32;
-	--xAxis;
+	++xAxis;
 
 	sf::Vertex line[2] =
 	{
@@ -45,4 +68,12 @@ void Board::drawHorizontalLine(sf::RenderWindow &window, int where, sf::Color co
 		sf::Vertex(sf::Vector2f((float)32 * xAxis, (float)where), color2)
 	};
 	window.draw(line, 2, sf::Lines);
+}
+
+void Board::drawEmptySquareBox(sf::RenderWindow &window, int x, int y)
+{
+	sf::RectangleShape squareBox(sf::Vector2f(30, 30));
+	squareBox.setPosition(32 + (x * 32), y * 32);
+	squareBox.setFillColor(this->boardSquare[x][y].getColor());
+	window.draw(squareBox);
 }

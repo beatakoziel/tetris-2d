@@ -1,3 +1,2 @@
-﻿  Board.cpp
-c:\users\michał\desktop\tetris\tetris-2d\board.cpp(74): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Tetris.cpp
   Tetris.vcxproj -> C:\Users\Michał\Desktop\TETRIS\tetris-2d\Debug\Tetris.exe

@@ -8,7 +8,7 @@ bool BoardSquare::isPresent()
 
 void BoardSquare::setPresence(bool isPresent)
 {
-	this -> figureSquarePresence = isPresent;
+     this -> figureSquarePresence = isPresent;
 }
 
 sf::Color BoardSquare::getColor()
@@ -18,7 +18,7 @@ sf::Color BoardSquare::getColor()
 
 void BoardSquare::setColor(sf::Color color)
 {
-	this->figureSquareColor = color;
+    this->figureSquareColor = color;
 }
 /* usun :c
 sf::Sprite BoardSquare::getSquareSprite()

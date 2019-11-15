@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 #include "Point.h"
+#include <iostream>
+#include <cmath>
+
+#define M_PI 3.14159265358979323846
 
 class Figure
 {
@@ -34,4 +38,5 @@ private:
 	sf::Sprite figureSprite;
 	int** figureMatrix;
 	sf::Color color;
+	int whichFigure;
 };

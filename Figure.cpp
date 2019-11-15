@@ -73,13 +73,52 @@ void Figure::moveDownFaster(sf::RenderWindow &window)
 
 void Figure::moveRotate()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		std::cout << "x=" << this->squaresCoordinates[i].getX() << "y=" << this->squaresCoordinates[i].getY() << std::endl;
+	}
+	std::cout << std::endl;
 
+	int minX = squaresCoordinates[0].getX();
+	int minY = squaresCoordinates[0].getY();
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (squaresCoordinates[i].getX() < minX)
+			minX = squaresCoordinates[i].getX();
+		if (squaresCoordinates[i].getY() < minY)
+			minY = squaresCoordinates[i].getY();
+	}
+
+	Point origin = Point(minX, minY);
+	Point rotatedCoordinates[4];
+		for (int i = 0; i < 4; i++) {
+
+			Point translationCoordinate =  Point(squaresCoordinates[i].getX() - origin.getX(), squaresCoordinates[i].getY() - origin.getY());
+			translationCoordinate.setY(translationCoordinate.getY()*-1);
+
+			rotatedCoordinates[i].setX(translationCoordinate.getX());
+			rotatedCoordinates[i].setY(translationCoordinate.getY());
+
+			rotatedCoordinates[i].setX( (int)round(translationCoordinate.getX() * cos(M_PI / 2) - translationCoordinate.getY() * sin(M_PI / 2)));
+			rotatedCoordinates[i].setY( (int)round(translationCoordinate.getX() * sin(M_PI / 2) + translationCoordinate.getY() * cos(M_PI / 2)));
+
+			rotatedCoordinates[i].setY(rotatedCoordinates[i].getY()*-1);
+
+			rotatedCoordinates[i].setX(rotatedCoordinates[i].getX() + origin.getX());
+			rotatedCoordinates[i].setY(rotatedCoordinates[i].getY() + origin.getY());
+
+			squaresCoordinates[i].setX(rotatedCoordinates[i].getX());
+			squaresCoordinates[i].setY(rotatedCoordinates[i].getY()+64);
+		}
+
+		findLastSquare();
 }
 
 int** Figure::generateFigureMatrix()
 {
 	srand((unsigned)time(NULL));
-	int whichFigure = 0;// rand() % 7;
+	int whichFigure = rand() % 7;
 	int** figureMatrix = new int*[4];
 	//int figureMatrix[2][4] = { {0} }; // = { {0} }; means "fill the matrix with zeroes"
 

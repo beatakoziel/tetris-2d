@@ -35,6 +35,6 @@ private:
 	void convertCoordinatesToMatrixPosition(int & x, int & y);
 	sf::Font font;
 	void cleanUpMatrix(int whichRaw);
-	void moveMatrixDown(int howMuch);
+	void moveMatrixDown(int howMuch, int fromWhere);
 };
 

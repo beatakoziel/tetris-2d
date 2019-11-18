@@ -12,7 +12,7 @@ public:
 	void moveRight(sf::RenderWindow &window);
 	void moveDown(sf::RenderWindow &window);
 	void moveDownFaster(sf::RenderWindow &window);
-	void moveRotate();
+	void moveRotate(sf::RenderWindow &window);
 	int** generateFigureMatrix();
 	sf::Color generateColorOfTetrisFigure();
 	sf::Texture loadFigureTexture();

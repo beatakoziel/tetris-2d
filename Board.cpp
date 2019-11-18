@@ -97,7 +97,6 @@ void Board::setPresenceInWholeBoard(Figure figure)
 		sf::Color color = figure.getColor();
 		convertCoordinatesToMatrixPosition(x, y);
 		if (x >= 0 && y >= 0 && y < 20) {
-			//++y;
 			this->boardSquare[y][x].setPresence(true);
 			if(this->boardSquare[y][x].getColor() == emptyBoxColor)
 				this->boardSquare[y][x].setColor(color);
@@ -173,6 +172,7 @@ bool Board::downCollisions(Figure figure)
 		convertCoordinatesToMatrixPosition(x, y);
 		if (y >= 19)
 			return false;
+			
 		if (x >= 0 && y >= 0 && y < 19)
 			if (boardSquare[y + 1][x].isPresent())
 				return false;
@@ -200,11 +200,11 @@ void Board::moveMatrixDown(int howMuch)
 			{
 				--shift;
 			}
-			std::cout << shift;
+			std::cout << boardSquare[i][j].isPresent() << " " <<"\n";
 			boardSquare[i + shift][j].setColor(boardSquare[i][j].getColor());
 			boardSquare[i + shift][j].setPresence(boardSquare[i][j].isPresent());
 			boardSquare[i][j].setColor(emptyBoxColor);
-			//boardSquare[i][j].setPresence(!boardSquare[i + shift][j].isPresent());
+			//boardSquare[i][j].setPresence(!boardSquare[i /*+ shift*/][j].isPresent());
 		}
 }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #define MAX_NUMBER_OF_ITEMS 3
 
@@ -22,6 +23,7 @@ private:
 	sf::Font font;
 	sf::Color activeOptionColor = sf::Color(222, 135, 47, 255);
 	sf::Color inactiveOptionColor = sf::Color(64, 64, 64, 128);
+	sf::Music moveUpDownSound, cantMove;
 
 	void loadMenuFont();
 	void initializeMenuOptions(float width, float height, sf::Color activeOptionColor, sf::Color inactiveOptionColor);

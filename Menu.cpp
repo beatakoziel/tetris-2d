@@ -7,6 +7,7 @@ Menu::Menu(float width, float height)
 {
 	loadMenuFont();
 	initializeMenuOptions(width, height, activeOptionColor, inactiveOptionColor);
+	sf::SoundBuffer buffer2, buffer3;
 }
 
 void Menu::drawTextInMenu(sf::RenderWindow &window)
@@ -19,22 +20,34 @@ void Menu::drawTextInMenu(sf::RenderWindow &window)
 
 void Menu::moveUp()
 {
+	if (!cantMove.openFromFile("resources/sounds/menu_click.ogg") || !moveUpDownSound.openFromFile("resources/sounds/menu_cant_click.ogg"))
+		std::cout << "Blad wczytywania dzwiekow menu!\n";
+
 	if (selectedItemIndex - 1 >= 0)
 	{
+		moveUpDownSound.play();
 		menu[selectedItemIndex].setFillColor(inactiveOptionColor);
 		selectedItemIndex--;
-		menu[selectedItemIndex].setFillColor(activeOptionColor);
+		menu[selectedItemIndex].setFillColor(activeOptionColor);		
 	}
+	else
+		cantMove.play();
 }
 
 void Menu::moveDown()
 {
+	if (!cantMove.openFromFile("resources/sounds/menu_click.ogg") || !moveUpDownSound.openFromFile("resources/sounds/menu_cant_click.ogg"))
+		std::cout << "Blad wczytywania dzwiekow menu!\n";
+
 	if (selectedItemIndex + 1 < MAX_NUMBER_OF_ITEMS)
-	{
+	{	
+		moveUpDownSound.play();
 		menu[selectedItemIndex].setFillColor(inactiveOptionColor);
 		selectedItemIndex++;
-		menu[selectedItemIndex].setFillColor(activeOptionColor);
+		menu[selectedItemIndex].setFillColor(activeOptionColor);		
 	}
+	else
+		cantMove.play();	
 }
 
 sf::Texture Menu::loadMenuBackground()

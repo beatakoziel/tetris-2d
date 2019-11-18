@@ -2,7 +2,7 @@
 #include "Board.h"
 #include <iostream>
 #include <string>
-#include <Windows.h>
+#include <SFML/Audio.hpp>
 
 Board::Board()
 {
@@ -228,6 +228,10 @@ int Board::checkLineOfSquares()
 	{
 		moveMatrixDown(strike, fromWhere);
 		changeColorsOfLines();	
+		sf::Music strikeMusic;
+		if (!strikeMusic.openFromFile("resources/sounds/strike.ogg"))
+			std::cout << "cant open game music";
+		strikeMusic.play();
 	}
 	strike *= strike;
 	return strike;

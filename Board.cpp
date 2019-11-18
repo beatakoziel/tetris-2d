@@ -190,10 +190,10 @@ void Board::cleanUpMatrix(int whichRaw)
 
 }
 
-void Board::moveMatrixDown(int howMuch)
+void Board::moveMatrixDown(int howMuch, int fromWhere)
 {
 	int shift = howMuch;
-	for (int i = 19; i >= 0; i--) 		
+	for (int i = fromWhere; i >= 0; i--)
 		for (int j = 0; j < columns; j++)
 		{
 			shift = howMuch;
@@ -201,32 +201,32 @@ void Board::moveMatrixDown(int howMuch)
 			{
 				--shift;
 			}
-			std::cout << shift;
+
 			boardSquare[i + shift][j].setColor(boardSquare[i][j].getColor());
 			boardSquare[i + shift][j].setPresence(boardSquare[i][j].isPresent());
-			boardSquare[i][j].setColor(emptyBoxColor);
-			//boardSquare[i][j].setPresence(!boardSquare[i + shift][j].isPresent());
 		}
 }
 
 int Board::checkLineOfSquares()
 {
-	int sumOfSquares[20] = { 0 }, strike = 0;
+	int sumOfSquares[20] = { 0 }, strike = 0, fromWhere = 0;
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < columns; j++)
 			if (boardSquare[i][j].isPresent())
-				sumOfSquares[i]++;
+				++sumOfSquares[i];
 
-	for (int i = 0; i < 20; i++)
-		if (sumOfSquares[i] == columns) 
+		if (sumOfSquares[i] == columns)
 		{
+			fromWhere = i-1;
 			strike++;
 			cleanUpMatrix(i);
 		}
+	}
+
 	if (strike > 0) 
 	{
-		moveMatrixDown(strike);
+		moveMatrixDown(strike, fromWhere);
 		changeColorsOfLines();	
 	}
 	strike *= strike;

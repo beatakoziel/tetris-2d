@@ -11,7 +11,7 @@ Figure::Figure()
 	figureSprite.setColor(color);
 }
 
-void Figure::draw(sf::RenderWindow &window)
+void Figure::draw()
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -19,42 +19,38 @@ void Figure::draw(sf::RenderWindow &window)
 		float squareY = this->squaresCoordinates[i].getY();
 		sf::Sprite currentSquareSprite;
 		currentSquareSprite.setPosition(squareX, squareY);
-		window.draw(currentSquareSprite);
 	}
 }
 
-void Figure::moveLeft(sf::RenderWindow &window)
+void Figure::moveLeft()
 {
 	for (int i = 0; i < 4; i++)
 	{
 		float squareX = this->squaresCoordinates[i].getX();
 		this->squaresCoordinates[i].setX(squareX - this->speed);
 		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
-		window.draw(this->figureSprite);
 	}
 	findLastSquare();
 }
 
-void Figure::moveRight(sf::RenderWindow &window)
+void Figure::moveRight()
 {
 	for (int i = 0; i < 4; i++)
 	{
 		float squareX = this->squaresCoordinates[i].getX();
 		this->squaresCoordinates[i].setX(squareX + this->speed);
 		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
-		window.draw(this->figureSprite);
 	}
 	findLastSquare();
 }
 
-void Figure::moveDown(sf::RenderWindow &window)
+void Figure::moveDown()
 {
 	for (int i = 0; i < 4; i++)
 	{
 		float squareY = this->squaresCoordinates[i].getY();
 		this->squaresCoordinates[i].setY(squareY + this->speed);
 		this->figureSprite.setPosition(squaresCoordinates[i].getX(), squaresCoordinates[i].getY());
-		window.draw(this->figureSprite);
 	}
 	findLastSquare();
 }
@@ -118,7 +114,7 @@ void Figure::moveRotate()
 int** Figure::generateFigureMatrix()
 {
 	srand((unsigned)time(NULL));
-	int whichFigure = rand() % 7;
+	int whichFigure = 0;// rand() % 7;
 	int** figureMatrix = new int*[4];
 	//int figureMatrix[2][4] = { {0} }; // = { {0} }; means "fill the matrix with zeroes"
 

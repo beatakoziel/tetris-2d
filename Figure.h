@@ -11,10 +11,10 @@ class Figure
 {
 public:
 	Figure();
-	void draw(sf::RenderWindow &window);
-	void moveLeft(sf::RenderWindow &window);
-	void moveRight(sf::RenderWindow &window);
-	void moveDown(sf::RenderWindow &window);
+	void draw();
+	void moveLeft();
+	void moveRight();
+	void moveDown();
 	void moveDownFaster(sf::RenderWindow &window);
 	void moveRotate();
 	int** generateFigureMatrix();

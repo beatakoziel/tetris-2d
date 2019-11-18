@@ -1,2 +1,5 @@
-﻿  Tetris.cpp
-  Tetris.vcxproj -> C:\Users\beata\source\repos\Tetris\Tetris\Debug\Tetris.exe
+﻿  Board.cpp
+  Tetris.cpp
+  Generowanie kodu...
+  LINK : nie znaleziono elementu C:\Users\Michał\Desktop\TETRIS\tetris-2d\Debug\Tetris.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+  Tetris.vcxproj -> C:\Users\Michał\Desktop\TETRIS\tetris-2d\Debug\Tetris.exe

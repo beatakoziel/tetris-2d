@@ -2,6 +2,7 @@
 #include "Board.h"
 #include <iostream>
 #include <string>
+#include <Windows.h>
 
 Board::Board()
 {
@@ -218,13 +219,16 @@ int Board::checkLineOfSquares()
 				sumOfSquares[i]++;
 
 	for (int i = 0; i < 20; i++)
-		if (sumOfSquares[i] == columns) {
+		if (sumOfSquares[i] == columns) 
+		{
 			strike++;
 			cleanUpMatrix(i);
 		}
-	if(strike>0)
+	if (strike > 0) 
+	{
 		moveMatrixDown(strike);
-
+		changeColorsOfLines();	
+	}
 	strike *= strike;
 	return strike;
 }

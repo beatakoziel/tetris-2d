@@ -16,7 +16,7 @@ public:
 	void moveRight();
 	void moveDown();
 	void moveDownFaster(sf::RenderWindow &window);
-	void moveRotate();
+	void moveRotate(int columns);
 	int** generateFigureMatrix();
 	sf::Color generateColorOfTetrisFigure();
 	sf::Texture loadFigureTexture();

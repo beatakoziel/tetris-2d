@@ -1,0 +1,13 @@
+﻿  Board.cpp
+c:\users\beata\source\repos\tetris\tetris\board.h(2): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  BoardSquare.cpp
+c:\users\beata\source\repos\tetris\tetris\boardsquare.h(2): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Figure.cpp
+c:\users\beata\source\repos\tetris\tetris\figure.h(3): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Game.cpp
+c:\users\beata\source\repos\tetris\tetris\game.h(3): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Menu.cpp
+c:\users\beata\source\repos\tetris\tetris\menu.h(3): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Graphics.hpp': No such file or directory
+  Tetris.cpp
+c:\users\beata\source\repos\tetris\tetris\tetris.cpp(3): fatal error C1083: Nie można otworzyć pliku dołącz: 'SFML/Window.hpp': No such file or directory
+  Generowanie kodu...

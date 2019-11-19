@@ -1,2 +1,21 @@
-﻿  Tetris.cpp
+﻿  Board.cpp
+  BoardSquare.cpp
+  Figure.cpp
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(80): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(81): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(82): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(83): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(90): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(92): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(94): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(96): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(103): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(108): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(123): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\beata\source\repos\tetris\tetris\figure.cpp(124): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Game.cpp
+  Menu.cpp
+  Tetris.cpp
+  Generowanie kodu...
+  LINK : nie znaleziono elementu C:\Users\beata\source\repos\Tetris\Tetris\Debug\Tetris.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
   Tetris.vcxproj -> C:\Users\beata\source\repos\Tetris\Tetris\Debug\Tetris.exe

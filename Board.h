@@ -18,7 +18,7 @@ public:
 	bool rightCollisions(Figure figure);
 	bool downCollisions(Figure figure);
 	int checkLineOfSquares();
-	void showScore(sf::RenderWindow & window, int scoreP);
+	void showScore(sf::RenderWindow & window, int scoreP, bool gameOver);
 	BoardSquare** getBoardSquare();
 	bool isItEndOfTheTetris();
 private:

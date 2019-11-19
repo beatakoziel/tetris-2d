@@ -4,7 +4,7 @@
 #include "Point.h"
 #include <iostream>
 #include <cmath>
-
+#include "BoardSquare.h"
 #define M_PI 3.14159265358979323846
 
 class Figure
@@ -16,7 +16,7 @@ public:
 	void moveRight();
 	void moveDown();
 	void moveDownFaster(sf::RenderWindow &window);
-	void moveRotate();
+	void moveRotate(int columns, BoardSquare ** boardSquare);
 	int** generateFigureMatrix();
 	sf::Color generateColorOfTetrisFigure();
 	sf::Texture loadFigureTexture();

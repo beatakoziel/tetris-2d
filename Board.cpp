@@ -251,3 +251,17 @@ void Board::showScore(sf::RenderWindow &window, int scoreP)
 
 	window.draw(text);
 }
+
+BoardSquare ** Board::getBoardSquare()
+{
+	return this->boardSquare;
+}
+
+bool Board::isItEndOfTheTetris()
+{
+	for (int i = 0; i < columns; i++)
+		if (boardSquare[0][i].isPresent())
+			return true;
+	return false;
+}
+

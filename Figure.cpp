@@ -67,7 +67,7 @@ void Figure::moveDownFaster(sf::RenderWindow &window)
 	findLastSquare();
 }
 
-void Figure::moveRotate()
+void Figure::moveRotate(int columns, BoardSquare** boardSquare)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -75,23 +75,47 @@ void Figure::moveRotate()
 	}
 	std::cout << std::endl;
 
+	Point origin;
+	int x, y;
 	int minX = squaresCoordinates[0].getX();
 	int minY = squaresCoordinates[0].getY();
-
+	int maxX = squaresCoordinates[0].getX();
+	int maxY = squaresCoordinates[0].getY();
+	int widthX = 32 * (columns-1);
+	int additionalValue = 0;
+	bool canMove = true;
 	for (int i = 0; i < 4; i++)
 	{
 		if (squaresCoordinates[i].getX() < minX)
 			minX = squaresCoordinates[i].getX();
+		if (squaresCoordinates[i].getX() > maxX)
+			maxX = squaresCoordinates[i].getX();
 		if (squaresCoordinates[i].getY() < minY)
 			minY = squaresCoordinates[i].getY();
+		if (squaresCoordinates[i].getY() > maxY)
+			maxY = squaresCoordinates[i].getY();
 	}
 
-	Point origin = Point(minX, minY);
+	if (minX >= widthX)
+	{
+		std::cout << "przy krawedzi" << std::endl;
+		additionalValue = 0;
+		 origin = Point(maxX, maxY);
+	}
+	else {
+		std::cout << "nie przy krawedzi" << std::endl;
+		additionalValue = 64;
+		origin = Point(minX, minY);
+	}
 	Point rotatedCoordinates[4];
+
+
+
 		for (int i = 0; i < 4; i++) {
 
 			Point translationCoordinate =  Point(squaresCoordinates[i].getX() - origin.getX(), squaresCoordinates[i].getY() - origin.getY());
 			translationCoordinate.setY(translationCoordinate.getY()*-1);
+			translationCoordinate.setY(translationCoordinate.getY()*1);
 
 			rotatedCoordinates[i].setX(translationCoordinate.getX());
 			rotatedCoordinates[i].setY(translationCoordinate.getY());
@@ -100,13 +124,29 @@ void Figure::moveRotate()
 			rotatedCoordinates[i].setY( (int)round(translationCoordinate.getX() * sin(M_PI / 2) + translationCoordinate.getY() * cos(M_PI / 2)));
 
 			rotatedCoordinates[i].setY(rotatedCoordinates[i].getY()*-1);
+			rotatedCoordinates[i].setY(rotatedCoordinates[i].getY()*1);
 
 			rotatedCoordinates[i].setX(rotatedCoordinates[i].getX() + origin.getX());
 			rotatedCoordinates[i].setY(rotatedCoordinates[i].getY() + origin.getY());
 
-			squaresCoordinates[i].setX(rotatedCoordinates[i].getX());
-			squaresCoordinates[i].setY(rotatedCoordinates[i].getY()+64);
+			x = (int)rotatedCoordinates[i].getX();
+			y = (int)rotatedCoordinates[i].getY();
+			x -= 32;
+			x /= 32;
+			y /= 32;
+			if (y >= 19)
+				canMove = false;
+			if (x >= 0 && y >= 0 && y < 19)
+				if (boardSquare[y + 1][x].isPresent())
+					canMove = false;
 		}
+
+		if(canMove)
+			for (int i = 0; i < 4; i++)
+			{
+				squaresCoordinates[i].setX(rotatedCoordinates[i].getX());
+				squaresCoordinates[i].setY(rotatedCoordinates[i].getY() + additionalValue);
+			}
 
 		findLastSquare();
 }
@@ -114,7 +154,7 @@ void Figure::moveRotate()
 int** Figure::generateFigureMatrix()
 {
 	srand((unsigned)time(NULL));
-	int whichFigure = rand() % 7;
+	int whichFigure =  rand() % 7;
 	int** figureMatrix = new int*[4];
 	//int figureMatrix[2][4] = { {0} }; // = { {0} }; means "fill the matrix with zeroes"
 

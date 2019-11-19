@@ -1,14 +1,2 @@
-﻿  Figure.cpp
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(79): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(80): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(81): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(82): warning C4244: "inicjowanie": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(87): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(89): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(91): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(93): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(99): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(103): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(115): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-c:\users\beata\source\repos\tetris\tetris\figure.cpp(116): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Tetris.cpp
   Tetris.vcxproj -> C:\Users\beata\source\repos\Tetris\Tetris\Debug\Tetris.exe

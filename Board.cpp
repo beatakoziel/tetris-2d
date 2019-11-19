@@ -79,7 +79,6 @@ void Board::drawSquareBox(sf::RenderWindow &window, int x, int y)
 
 	if (this->boardSquare[x][y].isPresent())
 		squareBox.setTexture(&(this -> squareTexture));
-
 	squareBox.setFillColor(this->boardSquare[x][y].getColor());
 	window.draw(squareBox);
 }
@@ -98,7 +97,6 @@ void Board::setPresenceInWholeBoard(Figure figure)
 		sf::Color color = figure.getColor();
 		convertCoordinatesToMatrixPosition(x, y);
 		if (x >= 0 && y >= 0 && y < 20) {
-			//++y;
 			this->boardSquare[y][x].setPresence(true);
 			if(this->boardSquare[y][x].getColor() == emptyBoxColor)
 				this->boardSquare[y][x].setColor(color);
@@ -237,7 +235,7 @@ int Board::checkLineOfSquares()
 	return strike;
 }
 
-void Board::showScore(sf::RenderWindow &window, int scoreP)
+void Board::showScore(sf::RenderWindow &window, int scoreP, bool gameOver)
 {
 	if (!font.loadFromFile("resources/fonts/Sketch3D.otf"))
 		sf::err();
@@ -247,7 +245,9 @@ void Board::showScore(sf::RenderWindow &window, int scoreP)
 	text.setFillColor(color);
 	text.setCharacterSize(24);
 	text.setString("SCORE: " + std::to_string(scoreP));
-	text.setPosition((float)(columns * 32) + 64, 100.f);
+	if(gameOver==false)
+		text.setPosition((float)(columns * 32) + 64, 100.f);
+	else text.setPosition(70, 610);
 
 	window.draw(text);
 }

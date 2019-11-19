@@ -53,7 +53,7 @@ void Menu::moveDown()
 sf::Texture Menu::loadMenuBackground()
 {
 	sf::Texture background_menu;
-	if (!background_menu.loadFromFile("resources/imgs/back-yellow.png"))
+	if (!background_menu.loadFromFile("resources/imgs/wall.jpg"))
 		sf::err();
 	background_menu.setSmooth(true);
 
@@ -62,10 +62,10 @@ sf::Texture Menu::loadMenuBackground()
 
 sf::Sprite Menu::createMenuSprite(sf::Texture & background_menu)
 {
-	sf::Vector2i screenDimensions(1280, 720);
+	sf::Vector2i screenDimensions(1065, 650);
 	sf::Sprite menuSprite;
 	menuSprite.setTexture(background_menu);
-	menuSprite.setScale((float)screenDimensions.x / background_menu.getSize().x, (float)screenDimensions.y / background_menu.getSize().y);
+	//menuSprite.setScale((float)screenDimensions.x / background_menu.getSize().x, (float)screenDimensions.y / background_menu.getSize().y);
 
 	return menuSprite;
 }
